@@ -1,0 +1,47 @@
+
+
+
+<h1>新規アカウントを作成</h1>
+<h3>簡単に登録できます</h3>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :名前 %>
+  <%= f.text_field :name %>
+
+  <%= f.label :アドレス %>
+  <%= f.email_field :email %>
+
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
+
+  <%= f.label :パスワード確認 %>
+  <%= f.password_field :password_confirmation %>
+
+  <%=f.label :誕生日 %>
+  <%= f.date_select(
+        :birthday,
+        start_year: 1930,
+        end_year: (Time.now.year - 18),
+        default: Date.new(1989, 1, 1)) %>
+
+
+  <%= f.label :gender, :男%>
+  <%= f.radio_button :gender, 1 %>
+  <%= f.label :gender, :女 %>
+  <%= f.radio_button :gender, 2 %>
+  <%= f.label :gender, :他 %>
+  <%= f.radio_button :gender, 3 %>
+
+
+  <%= f.submit "アカウント登録" %>
+<% end %>

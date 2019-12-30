@@ -1,0 +1,15 @@
+<h1><%= @user.name %>のページ</h1>
+
+<p>メールアドレス: <%= @user.email %></p>
+<p>生年月日：<%= @user.birthday %>  </p>
+<% if @user.gender =="1" %>
+<p>性別：男</p>
+<% elsif @user.gender =="2"%>
+<p>性別：女</p>
+<%else%>
+<p>性別：その他</p>
+
+<%= link_to 'Back', feeds_path %>
+
+
+<% end %>
