@@ -4,30 +4,49 @@
     <title>FacebookKadai</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
 
-    <% if current_user %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
+    <div class="wrapper">
 
+      <header>
+        <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+        <div class="header-logo">
+          <h3>Facebook-clone課題</h3>
+        </div>
 
+        <div class="header-menu">
+          <ul>
+            <% if logged_in? %>
+              <li>現在ログイン中のユーザー：<%= current_user.name %></li>
+              <li><%= link_to "Profile", user_path(current_user.id),:style=>"color:white;" %></li>
+              <li><%= link_to "Logout", session_path(current_user.id), method: :delete,:style=>"color:white;" %></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_path ,:style=>"color:white;" %></li>
+              <li><%= link_to "Login", new_session_path,:style=>"color:white;" %></li>
+            <% end %>
+          </ul>
+        </div>
 
+      </header>
 
-    <%= yield %>
+      <div class = "container">
+      <%= yield %>
+      </div>
 
-
-
+      <footer>
+        <div class="footer-logo">
+          <p> DIC課題</p>
+        </div>
+        <div class="footer-myname">
+          <p>小林智彦</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

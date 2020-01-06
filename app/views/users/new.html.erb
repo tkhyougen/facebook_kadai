@@ -1,8 +1,3 @@
-
-
-
-<h1>新規アカウントを作成</h1>
-<h3>簡単に登録できます</h3>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
@@ -14,34 +9,63 @@
   </div>
 <% end %>
 
+<div class="new_message">
+<h3>Facebookを使うと、友達や同僚、同級生、仲間たちとつながりを深められます。
+  ケータイ、スマートフォンからもアクセスできます。
+</h3>
+  <%= image_tag "D2gpTO7NG8Y.png", size:"500x200" %>
+
+</div>
+
+
+<div class="register_container">
+<h1>アカウント登録</h1>
+<h3>簡単に登録できます</h3>
+
 <%= form_with(model: @user, local: true) do |f| %>
+<div class="form">
   <%= f.label :名前 %>
-  <%= f.text_field :name %>
-
+  <%= f.text_field :name,placeholder: "姓名" %>
+</div>
+<br><br>
+<div class="form">
   <%= f.label :アドレス %>
-  <%= f.email_field :email %>
-
+  <%= f.email_field :email,placeholder: "xxx@example.com"%>
+</div>
+<br><br>
+<div class="form">
   <%= f.label :パスワード %>
-  <%= f.password_field :password %>
-
-  <%= f.label :パスワード確認 %>
-  <%= f.password_field :password_confirmation %>
-
+  <%= f.password_field :password ,placeholder: "パスワードを設定"%>
+</div>
+<br><br>
+<div class="form">
+  <%= f.label :パスワード確認用 %>
+  <%= f.password_field :password_confirmation,placeholder: "パスワードをもう一度入力してください" %>
+</div>
+<br><br>
+<div class="form">
   <%=f.label :誕生日 %>
+
   <%= f.date_select(
         :birthday,
         start_year: 1930,
         end_year: (Time.now.year - 18),
         default: Date.new(1989, 1, 1)) %>
-
-
+</div>
+<br><br>
+<div class="form">
+  <span>性別&nbsp;&nbsp;</span>
   <%= f.label :gender, :男%>
   <%= f.radio_button :gender, 1 %>
   <%= f.label :gender, :女 %>
   <%= f.radio_button :gender, 2 %>
   <%= f.label :gender, :他 %>
   <%= f.radio_button :gender, 3 %>
-
+</div>
+<br><br>
+<div class="form">
 
   <%= f.submit "アカウント登録" %>
+</div>
 <% end %>
+</div>

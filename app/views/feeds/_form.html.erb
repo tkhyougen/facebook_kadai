@@ -1,28 +1,28 @@
-<%= form_with(model: feed, local: true) do |form| %>
-  <% if feed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+<div class="feeds_container">
 
-      <ul>
-      <% feed.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <%= form_with(model: feed, local: true, url:confirm_feeds_path) do |form| %>
+      <% if feed.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+          <ul>
+          <% feed.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+    <div class="field">
+      <%= form.label :写真 %>
+      <%= image_tag(@feed.image.thumb.url) if @feed.image && @feed.image.url %>
+      <%= form.file_field :image %>
+      <%= form.text_area :message,size: "50x5",placeholder:"メッセージを入力" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
 
-
-
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

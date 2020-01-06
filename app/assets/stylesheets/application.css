@@ -1,15 +1,131 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
- */
+*/
+
+html{
+  overflow:auto;
+}
+
+body {
+  color: #1c1e21;;
+  margin:0;
+  min-height: 100vh;
+  width:100%;
+  text-align:center;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position:relative;
+  padding-bottom:30px;
+
+}
+
+
+header {
+  height: 64px;
+  position: absolute;
+  z-index: 1;
+  width:100%;
+  background-color:#3578E5;
+
+}
+
+.header-logo{
+  width:50%;
+}
+
+.header-logo h3 {
+  float: left;
+  color: white;
+  font-size: 22px;
+  padding-left:20px;
+}
+
+.header-menu {
+
+  float: right;
+  padding-right: 30px;
+  padding-top:10px;
+}
+
+ul{
+  list-style-type:none;
+}
+.header-menu li {
+  float: left;
+  font-size: 20px;
+  padding-left:15px;
+}
+
+
+  /* 以下container   */
+
+.new_message{
+  padding:0px 20px;
+  text-align:left;
+  height:500px;
+  float:left;
+  width:40%
+}
+
+
+.register_container, .login_container, {
+  padding:80px 20px;
+  text-align:left;
+  height:500px;
+  float:right;
+  width:40%
+
+}
+
+
+.form{
+  display:inline-flex;
+}
+
+.container{
+  width:100%;
+  background-color: white;
+  padding-top:80px;
+}
+
+  /* 以下footer   */
+footer{
+  width:100%;
+  margin-top:30px;
+  background-color:#3578E5;
+  clear:both;
+  bottom:0;
+  position: absolute;
+}
+
+.footer-logo p {
+  float: left;
+  font-size: 15px;
+  padding-left:20px;
+  color:white;
+}
+
+.footer-myname {
+  float: right;
+  padding-right: 30px;
+}
+
+.footer-myname p {
+  font-size: 15px;
+  color:white;
+}
+
+.notice{
+  font-size:15px;
+  color:black;
+  background-color: yellow;
+}
+
+.danger{
+  font-size:15px;
+  color:black;
+  background-color: red;
+}

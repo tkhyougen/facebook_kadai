@@ -4,7 +4,8 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    user = User.find_by(id:current_user.id)
+    @feeds = user.feeds.all.order(created_at: :desc)
   end
 
   # GET /feeds/1
@@ -17,26 +18,30 @@ class FeedsController < ApplicationController
     if params[:back]
     @feed = Feed.new(feed_params)
     else
-    @feed = Feed,new
+    @feed = Feed.new
     end
   end
 
   def confirm
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
+    render :new if @feed.invalid?
+
   end
 
   # GET /feeds/1/edit
-  def edit
+  def edit  
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to @feed, notice: '投稿されました' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -45,12 +50,14 @@ class FeedsController < ApplicationController
     end
   end
 
+
+
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to @feed, notice: '更新されました' }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
@@ -64,18 +71,18 @@ class FeedsController < ApplicationController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to feeds_url, notice: '削除されました.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_feed
       @feed = Feed.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def feed_params
       params.require(:feed).permit(:image, :message, :image_cache)
     end
