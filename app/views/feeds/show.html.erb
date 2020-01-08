@@ -1,14 +1,12 @@
 <div class="feeds_container">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>写真:</strong>
+    <%= image_tag @feed.image.thumb.url if @feed.image.present? %>
+  </p>
+  <p><%= @feed.message %> </p>
 
-<p>
-  <strong>写真:</strong>
-  <%= image_tag @feed.image.thumb.url if @feed.image.present? %>
-</p>
-<p><%= @feed.message %> </p>
-
-
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+  <%= link_to 'Edit', edit_feed_path(@feed) %> |
+  <%= link_to 'Back', feeds_path %>
 
 </div>

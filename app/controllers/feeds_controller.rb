@@ -25,12 +25,13 @@ class FeedsController < ApplicationController
   def confirm
     @feed = Feed.new(feed_params)
     @feed.user_id = current_user.id
-    render :new if @feed.invalid?
 
+    render :new if @feed.invalid?
   end
 
   # GET /feeds/1/edit
-  def edit  
+  def edit
+
   end
 
   # POST /feeds
@@ -49,8 +50,6 @@ class FeedsController < ApplicationController
       end
     end
   end
-
-
 
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
@@ -76,14 +75,17 @@ class FeedsController < ApplicationController
     end
   end
 
+
+############################################################
   private
 
-    def set_feed
-      @feed = Feed.find(params[:id])
-    end
+  def set_feed
+   @feed = Feed.find(params[:id])
+  end
 
 
-    def feed_params
-      params.require(:feed).permit(:image, :message, :image_cache)
-    end
+  def feed_params
+    params.require(:feed).permit(:image, :message, :image_cache)
+  end
+
 end

@@ -8,14 +8,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
 
+  <body>
     <div class="wrapper">
 
       <header>
-        <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
         <div class="header-logo">
           <h3>Facebook-clone課題</h3>
         </div>
@@ -32,11 +32,10 @@
             <% end %>
           </ul>
         </div>
-
       </header>
 
       <div class = "container">
-      <%= yield %>
+        <%= yield %>
       </div>
 
       <footer>

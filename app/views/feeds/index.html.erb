@@ -1,25 +1,23 @@
 <div class="feeds_container">
 
-
   <h2><%= link_to '新しく投稿する', new_feed_path %></h2>
   <br />
   <br />
+  <h1>投稿一覧</h1>
 
-    <h1>投稿一覧</h1>
-    <div class="post">
-      <% @feeds.each do |feed| %>
-          <p><%= feed.message %></p>
-          <p><%= image_tag(feed.image.thumb.url) if feed.image.present? %></p>
-          <p><%= feed.image %></p>
-          <p><%= feed.user.name %>が投稿 </p>
-          <p><%= feed.updated_at %>に投稿</p>
-          <td><%= link_to 'Show', feed %></td>
-          <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-          <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <br><br>
-          <span>---------------------------------------------------------</span>
-      <% end %>
-    </div>
-
+  <div class="post">
+    <% @feeds.each do |feed| %>
+        <p><%= feed.message %></p>
+        <p><%= image_tag(feed.image.thumb.url) if feed.image.present? %></p>
+        <p><%= feed.image %></p>
+        <p><%= feed.user.name %>が投稿 </p>
+        <p><%= feed.updated_at %>に投稿</p>
+        <td><%= link_to 'Show', feed %></td>
+        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <br><br>
+        <span>---------------------------------------------------------</span>
+    <% end %>
+  </div>
 
 </div>

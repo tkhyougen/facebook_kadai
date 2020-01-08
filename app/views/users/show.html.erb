@@ -1,26 +1,25 @@
 <div class="users_show_container">
 
-<% if logged_in? %>
-  <h1><%= @user.name %>のページ</h1>
-<%else%>
-  <h1>ユーザー：<%= @user.name %>を登録しました。</h1>
-  <h1>ログインしてください</h1>
-<%end %>
+  <% if logged_in? %>
+    <h1><%= @user.name %>のページ</h1>
+  <%else%>
+    <h1>ユーザー：<%= @user.name %>を登録しました。</h1>
+    <h1>ログインしてください</h1>
+  <%end %>
 
+  <p>メールアドレス: <%= @user.email %></p>
+  <p>生年月日：<%= @user.birthday %>  </p>
+  <% if @user.gender =="1" %>
+    <p>性別：男</p>
+  <% elsif @user.gender =="2"%>
+    <p>性別：女</p>
+  <%else%>
+    <p>性別：その他</p>
+  <% end %>
 
-<p>メールアドレス: <%= @user.email %></p>
-<p>生年月日：<%= @user.birthday %>  </p>
-<% if @user.gender =="1" %>
-<p>性別：男</p>
-<% elsif @user.gender =="2"%>
-<p>性別：女</p>
-<%else%>
-<p>性別：その他</p>
-<% end %>
-
-<% if logged_in? %>
-<p><%= link_to '投稿一覧へ', feeds_path %></p>
-<%else%>
-<%end %>
+  <% if logged_in? %>
+    <p><%= link_to '投稿一覧へ', feeds_path %></p>
+  <%else%>
+  <%end %>
 
 </div>
