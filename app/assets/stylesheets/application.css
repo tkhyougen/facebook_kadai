@@ -10,21 +10,23 @@ html{
 body {
   color: #1c1e21;;
   margin:0;
-  min-height: 100vh;
   width:100%;
   text-align:center;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
 .wrapper{
-  min-height: 100vh;
+  height:auto !important; height: 100%; min-height: 100%;
   position:relative;
-  padding-bottom:30px;
+  padding-bottom:60px;
 }
 
 
 header {
   height: 64px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width:100%;
   background-color:#3578E5;
@@ -43,7 +45,6 @@ header {
 }
 
 .header-menu {
-
   float: right;
   padding-right: 30px;
   padding-top:10px;
@@ -71,7 +72,7 @@ ul{
 
 
 .register_container, .login_container, {
-  padding:80px 20px;
+  padding:0px 20px;
   text-align:left;
   height:500px;
   float:right;
@@ -88,6 +89,7 @@ ul{
   width:100%;
   background-color: white;
   padding-top:80px;
+  flex:1;
 }
 
   /* 以下footer   */
@@ -98,6 +100,7 @@ footer{
   clear:both;
   bottom:0;
   position: absolute;
+  height:40px;
 }
 
 .footer-logo p {
@@ -117,6 +120,7 @@ footer{
   color:white;
 }
 
+  /* その他   */
 .notice{
   font-size:15px;
   color:black;

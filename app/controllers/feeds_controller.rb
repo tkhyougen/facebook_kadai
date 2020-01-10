@@ -39,16 +39,15 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     @feed.user_id = current_user.id
-
-    respond_to do |format|
-      if @feed.save
-        format.html { redirect_to @feed, notice: '投稿されました' }
-        format.json { render :show, status: :created, location: @feed }
-      else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @feed.save
+          format.html { redirect_to @feed, notice: '投稿されました' }
+          format.json { render :show, status: :created, location: @feed }
+        else
+          format.html { render :new }
+          format.json { render json: @feed.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /feeds/1

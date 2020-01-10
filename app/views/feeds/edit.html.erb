@@ -16,6 +16,7 @@
     <div class="field">
       <%= form.label :写真 %>
       <%= image_tag(@feed.image.thumb.url) if @feed.image && @feed.image.url %>
+      <br />
       <%= form.file_field :image %>
       <%= form.text_area :message,size: "50x5",placeholder:"メッセージを入力" %>
     </div>
