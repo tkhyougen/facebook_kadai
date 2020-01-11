@@ -30,7 +30,6 @@ header {
   z-index: 1;
   width:100%;
   background-color:#3578E5;
-
 }
 
 .header-logo{
@@ -90,6 +89,7 @@ ul{
   background-color: white;
   padding-top:80px;
   flex:1;
+
 }
 
   /* 以下footer   */
@@ -99,9 +99,14 @@ footer{
   background-color:#3578E5;
   clear:both;
   bottom:0;
-  position: absolute;
+  position: fixed;
+  z-index:1;
   height:40px;
+
+
 }
+
+
 
 .footer-logo p {
   float: left;

@@ -1,19 +1,13 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
-  # GET /feeds
-  # GET /feeds.json
   def index
-    user = User.find_by(id:current_user.id)
-    @feeds = user.feeds.all.order(created_at: :desc)
+    @feeds = Feed.all.order(created_at: :desc)
   end
 
-  # GET /feeds/1
-  # GET /feeds/1.json
   def show
   end
 
-  # GET /feeds/new
   def new
     if params[:back]
     @feed = Feed.new(feed_params)
@@ -29,13 +23,9 @@ class FeedsController < ApplicationController
     render :new if @feed.invalid?
   end
 
-  # GET /feeds/1/edit
   def edit
-
   end
 
-  # POST /feeds
-  # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
     @feed.user_id = current_user.id
@@ -50,8 +40,6 @@ class FeedsController < ApplicationController
       end
   end
 
-  # PATCH/PUT /feeds/1
-  # PATCH/PUT /feeds/1.json
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -64,8 +52,6 @@ class FeedsController < ApplicationController
     end
   end
 
-  # DELETE /feeds/1
-  # DELETE /feeds/1.json
   def destroy
     @feed.destroy
     respond_to do |format|
@@ -73,7 +59,6 @@ class FeedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
 ############################################################
   private

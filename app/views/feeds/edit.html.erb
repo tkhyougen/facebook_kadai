@@ -1,6 +1,5 @@
 <div class="feeds_container">
   <h1>編集する</h1>
-
   <%= form_with(model: @feed, local: true) do |form| %>
       <% if @feed.errors.any? %>
         <div id="error_explanation">
@@ -18,14 +17,13 @@
       <%= image_tag(@feed.image.thumb.url) if @feed.image && @feed.image.url %>
       <br />
       <%= form.file_field :image %>
-      <%= form.text_area :message,size: "50x5",placeholder:"メッセージを入力" %>
+      <%= form.text_area :message,size: "50x4",placeholder:"メッセージを入力" %>
     </div>
 
     <div class="actions">
       <%= form.submit %>
     </div>
   <% end %>
-
-  <%= link_to 'Back', feeds_path %>
+   <%= link_to '投稿一覧に戻る', feeds_path %>
 
 </div>

@@ -1,6 +1,4 @@
 <div class="feeds_container">
-
-
   <h1>確認画面</h1>
   <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
     <%= image_tag(@feed.image.thumb.url) if @feed.image && @feed.image.url %>
@@ -15,7 +13,4 @@
     <%= form.hidden_field :message %>
     <%= form.submit "戻る", name: "back" %>
   <% end %>
-
-
-
 </div>
